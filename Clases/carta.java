@@ -3,6 +3,12 @@ public class carta {
     private Integer valor;
     private String accion;
 
+    public carta(String color, Integer valor, String accion) {
+        this.accion = accion;
+        this.color = color;
+        this.valor = valor;
+    }
+
     public String getAccion() {
         return accion;
     }

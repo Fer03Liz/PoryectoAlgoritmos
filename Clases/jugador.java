@@ -7,6 +7,12 @@ public class jugador {
 
     private mazo cartas;
 
+    public jugador(String nombre) {
+        this.nombre = nombre;
+        puntuacion = 0;
+        cartas = null;
+    }
+
     public boolean jugarCarta(carta carta) {
         return cartas.eliminarCarta(carta);
     }

@@ -5,6 +5,10 @@ public class mazo {
 
     private List<carta> cartas;
 
+    public mazo(List<carta> cartas) {
+        this.cartas = cartas;
+    }
+
     public void barajear() {
         Random random = new Random();
         int tamaño = cartas.size();
