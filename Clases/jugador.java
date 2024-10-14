@@ -7,16 +7,8 @@ public class jugador {
 
     private mazo cartas;
 
-    public boolean jugarCarta(carta carta){
-        boolean bandera = false;
-        for (carta  c : cartas.getCartas()) {
-            if(c.equals(carta)){
-                bandera= true;
-                cartas
-            }
-        }
-        return bandera;
-
+    public boolean jugarCarta(carta carta) {
+        return cartas.eliminarCarta(carta);
     }
 
     public mazo getCartas() {

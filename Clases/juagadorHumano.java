@@ -1,4 +1,8 @@
-public class juagadorHumano {
+public class juagadorHumano extends jugador {
 
-    private 
+    public boolean hacerMovimiento() {
+        boolean bandera = false;
+        return bandera;
+
+    }
 }
