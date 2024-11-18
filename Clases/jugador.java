@@ -19,7 +19,7 @@ public abstract class Jugador {
     }
 
     // Método abstracto: realizar el turno
-    public abstract void realizarTurno();
+    public abstract void realizarTurno(Carta cartaEnJuego, Baraja mazoPrincipal, Baraja mazoDescarte);
 
     // Getters y setters
     public Mano getCartas() {
