@@ -70,28 +70,42 @@ public class Juego {
     private void crearBaraja() {
         String[] coloresLadoClaro = {"Rojo", "Azul", "Verde", "Amarillo"};
         String[] coloresLadoOscuro = {"Rosa", "Turquesa", "Morado", "Naranja"};
-        String[] accionesLadoClaro = {null, "Salta", "Reversa", "+2"};
-        String[] accionesLadoOscuro = {null, "Salta", "Reversa", "+5", "Flip"};
-
-        // Generar cartas numéricas y especiales
+        String[] accionesLadoClaro = {"Saltar", "Reversa", "+2"};
+        String[] accionesLadoOscuro = {"Saltar", "Reversa", "+5"};
+    
+        // Generar cartas numéricas (0-9)
         for (int i = 0; i < coloresLadoClaro.length; i++) {
             for (int valor = 0; valor <= 9; valor++) {
                 baraja.agregarCarta(new Carta(coloresLadoClaro[i], valor, null, coloresLadoOscuro[i], valor, null));
             }
+        }
+    
+        // Generar cartas de acción estándar (Saltar, Reversa, +2)
+        for (int i = 0; i < coloresLadoClaro.length; i++) {
             for (String accion : accionesLadoClaro) {
                 baraja.agregarCarta(new Carta(coloresLadoClaro[i], -1, accion, coloresLadoOscuro[i], -1, null));
             }
+        }
+    
+        // Generar cartas de acción avanzadas para el lado oscuro (+5)
+        for (int i = 0; i < coloresLadoClaro.length; i++) {
             for (String accion : accionesLadoOscuro) {
-                baraja.agregarCarta(new Carta(coloresLadoClaro[i], -1, "Flip", coloresLadoOscuro[i], -1, accion));
+                baraja.agregarCarta(new Carta(coloresLadoClaro[i], -1, null, coloresLadoOscuro[i], -1, accion));
             }
         }
-
-        // Agregar cartas comodín (Wild y Wild Draw +2)
+    
+        // Generar cartas "Flip" de color Comodín
+        for (int i = 0; i < 4; i++) {
+            baraja.agregarCarta(new Carta("Comodín", -1, "Flip", "Comodín", -1, "Flip"));
+        }
+    
+        // Generar cartas de comodín y Wild +4
         for (int i = 0; i < 4; i++) {
             baraja.agregarCarta(new Carta("Comodín", -1, "Wild", "Comodín", -1, "Wild"));
-            baraja.agregarCarta(new Carta("Comodín", -1, "+2", "Comodín", -1, "+2"));
+            baraja.agregarCarta(new Carta("Comodín", -1, "Wild +4", "Comodín", -1, "Wild +4"));
         }
     }
+    
 
     // Método para repartir cartas iniciales a cada jugador
     private void repartirCartasIniciales() {
