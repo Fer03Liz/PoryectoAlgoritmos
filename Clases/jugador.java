@@ -1,38 +1,33 @@
-
-public class jugador {
+public abstract class Jugador {
 
     private String nombre;
+    private Mano cartas; // Mano del jugador
 
-    private int puntuacion;
-
-    private mazo cartas;
-
-    public boolean jugarCarta(carta carta){
-        boolean bandera = false;
-        for (carta  c : cartas.getCartas()) {
-            if(c.equals(carta)){
-                bandera= true;
-                cartas
-            }
-        }
-        return bandera;
-
+    public Jugador(String nombre) {
+        this.nombre = nombre;
+        this.cartas = new Mano();
     }
 
-    public mazo getCartas() {
+    // Método para jugar una carta (remover de la mano)
+    public boolean jugarCarta(Carta carta) {
+        return cartas.getCartas().remove(carta); // Ahora accede correctamente a las cartas
+    }
+
+    // Método para jugar una carta por índice
+    public Carta jugarCartaPorIndice(int indice) {
+        return cartas.jugarCarta(indice); // Usa el método de la clase Mano
+    }
+
+    // Método abstracto: realizar el turno
+    public abstract void realizarTurno();
+
+    // Getters y setters
+    public Mano getCartas() {
         return cartas;
     }
 
-    public void setCartas(mazo cartas) {
+    public void setCartas(Mano cartas) {
         this.cartas = cartas;
-    }
-
-    public int getPuntuacion() {
-        return puntuacion;
-    }
-
-    public void setPuntuacion(int puntuacion) {
-        this.puntuacion = puntuacion;
     }
 
     public String getNombre() {
@@ -42,5 +37,4 @@ public class jugador {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-
 }
